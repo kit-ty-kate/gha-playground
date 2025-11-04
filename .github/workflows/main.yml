@@ -12,3 +12,9 @@ jobs:
     - name: Fail
       continue-on-error: true
       run: false
+    - name: After continue-on-error
+      if: steps.plan.outcome == 'failure'
+      run: true
+    - name: The normal path
+      if: steps.plan.outcome != 'failure'
+      run: true
