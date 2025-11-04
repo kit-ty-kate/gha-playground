@@ -10,11 +10,12 @@ jobs:
     - name: Checkout tree
       uses: actions/checkout@v5
     - name: Fail
+      id: some-failure
       continue-on-error: true
       run: false
     - name: After continue-on-error
-      if: steps.plan.outcome == 'failure'
+      if: steps.some-failure.outcome == 'failure'
       run: true
     - name: The normal path
-      if: steps.plan.outcome != 'failure'
+      if: steps.some-failure.outcome != 'failure'
       run: true
