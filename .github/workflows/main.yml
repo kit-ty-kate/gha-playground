@@ -1,0 +1,14 @@
+name: Test
+
+on:
+  push:
+
+jobs:
+  Analyse:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+    - name: Checkout tree
+      uses: actions/checkout@v5
+    - name: Fail
+      run: false
